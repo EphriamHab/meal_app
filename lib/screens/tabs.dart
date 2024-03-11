@@ -12,11 +12,11 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  int _selectedPageIdex = 0;
+  int _selectedPageIndex = 0;
 
   void _selectPage(int index) {
     setState(() {
-      _selectedPageIdex = index;
+      _selectedPageIndex = index;
     });
   }
 
@@ -25,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
     Widget activePage = const CategoriesScreen();
     var activePageTitle = "Categories";
 
-    if (_selectedPageIdex == 1) {
+    if (_selectedPageIndex == 1) {
       activePage = const MealsScreen(meals: []);
       activePageTitle = "Your Favorites";
     }
@@ -37,7 +37,7 @@ class _TabsScreenState extends State<TabsScreen> {
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
-        currentIndex: _selectedPageIdex,
+        currentIndex: _selectedPageIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.set_meal), label: "Categories"),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Favorites"),
