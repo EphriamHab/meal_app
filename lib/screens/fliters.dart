@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 // import 'package:meal_app/screens/tabs.dart';
 // import 'package:meal_app/widgets/main_drawer.dart';
-
+enum Filter {
+  glutenFree,
+  lactoseFree,
+  vegetarian,
+  vegan,
+}
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
 
