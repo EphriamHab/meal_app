@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/models/meal.dart';
 import 'package:meal_app/screens/categories.dart';
-import 'package:meal_app/screens/fliters.dart';
+import 'package:meal_app/screens/filters.dart';
 import 'package:meal_app/screens/meals.dart';
 import 'package:meal_app/widgets/main_drawer.dart';
 
@@ -45,14 +45,14 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) {
-     Navigator.of(context).pop();
+  void _setScreen(String identifier) async {
+    Navigator.of(context).pop();
     if (identifier == 'filters') {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
-    } 
-     
-    
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+          MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
+
+      print(result);
+    }
   }
 
   @override
