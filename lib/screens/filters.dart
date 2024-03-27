@@ -10,8 +10,8 @@ enum Filter {
 }
 
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key});
-
+  const FiltersScreen({super.key, required this.currentFilters});
+  final Map<Filter, bool> currentFilters;
   @override
   State<FiltersScreen> createState() {
     return _FiltersScreenState();
@@ -23,6 +23,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _lactoseFreeFilterSet = false;
   var _vegetarianFreeFilterSet = false;
   var _veganFreeFilterSet = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _gultenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
+    _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
+    _veganFreeFilterSet = widget.currentFilters[Filter.vegan]!;
+    _vegetarianFreeFilterSet = widget.currentFilters[Filter.vegetarian]!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +142,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
       ),
     );
   }
-    @override
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // ignore: deprecated_member_use
