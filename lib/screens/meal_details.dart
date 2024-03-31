@@ -19,7 +19,7 @@ class MealDetialsScreen extends ConsumerWidget {
         actions: [
           IconButton(
           onPressed: () {
-            final wasAdded =ref
+            final wasAdded = ref
                 .read(favoriteMealsProvider.notifier)
                 .toggleMealFavorites(meal);
             ScaffoldMessenger.of(context).clearSnackBars();
